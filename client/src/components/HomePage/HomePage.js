@@ -1,59 +1,64 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // import emailjs from 'emailjs-com';
 // import { NavLink, Route } from 'react-router-dom';
 
 
 // import styling 
 import './HomePage.scss';
+// import '../styling/Header.scss';
 import '../styling/form-master.scss';
 
 // images
+import logo from '../images/footprints1.jpg';
 
 //import application components
 
 export default class HomePage extends Component {
 
-    sendEmail(e) {
+    captureTask(e) {
         e.preventDefault();
         let message = e.target.message.value;
         let reason = e.target.selectorReason.value;
-
-        console.log('type of activity:', message, 'classification:', reason);
         
+        let timestamp = Date.now();
+        
+        axios
+            .post('http://localhost:8900/analyze', {
+            headers: {
+            "Content-Type": "application/json"
+            },
+            data: {
+            time: timestamp,
+            message: message,
+            classification: reason
+            }})        
+            .then(result => {
+                let response = result.data;
+                console.log('response:', response);
 
-        // emailjs.send('angel_mortgage_monitor', 'angel-monitor', {user_name, user_email, user_telephone, reason, message}, user)
-        // .then((result) => {
-        //   console.log(result.text);
-        //   // clear the form
-        //     let clearInputName = document.querySelector('.monitor__name-field');
-        //     clearInputName.value = " ";
-        //     let clearInputEmail = document.querySelector('.monitor__email-field');
-        //     clearInputEmail.value = " ";
-        //     let clearInputTelephone = document.querySelector('.monitor__telephone-field');
-        //     clearInputTelephone.value = "";
-        //     let clearInputSelector = document.querySelector('.monitor__selector-field');
-        //     clearInputSelector.value = " ";
-        //     let clearInputMessage = document.querySelector('.monitor__message-field');
-        //     clearInputMessage.value = "Thank you for your query! ";
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        };
+  
 
-        // }, (error) => {
-        //     console.log(error.text);
-        // });
-    }
+    
     render() {
         return (
             <>
             <header className="header__container">
-              {/* <div className="header__corp">
+              <div className="header__corp">
                 <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
-                <p className="header__corp-info">License No 12036</p>
-                <p className="header__corp-info2">Independently Owned and Operated Franchise</p>
-              </div> */}
+                {/* <p className="header__corp-info">License No 12036</p>
+                <p className="header__corp-info2">Independently Owned and Operated Franchise</p> */}
+              </div>
                 <div className="header__title-container">
-                  <h1 className="header__title">Work-Life Balance Monitor</h1>
+                  <h1 className="header__title">Footprints</h1>
                 </div>
             </header>
-                <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.sendEmail}>   
+                <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.captureTask}>   
                     <section className="monitor__intro">
                         <p>We are here to help you determine if your work-life balance is out of whack. Please update what you are doing every time you switch tasks.</p>
                     </section>
