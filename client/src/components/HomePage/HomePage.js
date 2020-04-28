@@ -30,8 +30,8 @@ export default class HomePage extends Component {
             },
             data: {
             time: timestamp,
-            message: message,
-            classification: reason
+            classification: reason,
+            message: message
             }})        
             .then(result => {
                 let response = result.data;
