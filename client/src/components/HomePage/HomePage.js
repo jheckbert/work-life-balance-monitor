@@ -20,11 +20,22 @@ export default class HomePage extends Component {
         e.preventDefault();
         let message = e.target.message.value;
         let reason = e.target.selectorReason.value;
-        
+
         let timestamp = Date.now();
-        
+
         axios
             .post('http://localhost:5000/tasks', {
+<<<<<<< HEAD
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    time: timestamp,
+                    message: message,
+                    classification: reason
+                }
+            })
+=======
             headers: {
             "Content-Type": "application/json"
             },
@@ -33,6 +44,7 @@ export default class HomePage extends Component {
             classification: reason,
             message: message
             }})        
+>>>>>>> 20b21881295728faff0b60da168110dc01c5b69b
             .then(result => {
                 let response = result.data;
                 console.log('response:', response);
@@ -41,24 +53,24 @@ export default class HomePage extends Component {
             .catch(err => {
                 console.log(err);
             })
-        };
-  
+    };
 
-    
+
+
     render() {
         return (
             <>
-            <header className="header__container">
-              <div className="header__corp">
-                <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
-                {/* <p className="header__corp-info">License No 12036</p>
+                <header className="header__container">
+                    <div className="header__corp">
+                        <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
+                        {/* <p className="header__corp-info">License No 12036</p>
                 <p className="header__corp-info2">Independently Owned and Operated Franchise</p> */}
-              </div>
-                <div className="header__title-container">
-                  <h1 className="header__title">Footprints</h1>
-                </div>
-            </header>
-                <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.captureTask}>   
+                    </div>
+                    <div className="header__title-container">
+                        <h1 className="header__title">Footprints</h1>
+                    </div>
+                </header>
+                <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.captureTask}>
                     <section className="monitor__intro">
                         <p>We are here to help you determine if your work-life balance is out of whack. Please update what you are doing every time you switch tasks.</p>
                     </section>
@@ -74,7 +86,7 @@ export default class HomePage extends Component {
                     </div>
                     <div className="monitor__message">
                         <label className="monitor__message-label form-label">Optional type of task:</label>
-                        <textarea className="monitor__message-field form-field" name="message"/>
+                        <textarea className="monitor__message-field form-field" name="message" />
                     </div>
                     <button className="monitor__button" name="monitor-button">Send</button>
                 </form>
