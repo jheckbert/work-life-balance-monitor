@@ -3,7 +3,7 @@ const taskListFile = __dirname + "/../data_model/taskList.json"
 const taskList = require(taskListFile)
 const taskListRouter = express.Router()
 
-taskListRouter.get("/", (req, res) => {
+taskListRouter.post("/", (req, res) => {
     res.send(taskList)
 })
 

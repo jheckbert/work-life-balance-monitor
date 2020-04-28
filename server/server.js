@@ -2,6 +2,10 @@
 const express = require("express")
 const app = express();
 
+// import data 
+const timeData = require('./timeData.js');
+const rateRange = require('./rateRange.js');
+
 //Using CORS
 const cors = require("cors")
 app.use(cors())

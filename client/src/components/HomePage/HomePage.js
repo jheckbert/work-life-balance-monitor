@@ -24,7 +24,7 @@ export default class HomePage extends Component {
         let timestamp = Date.now();
         
         axios
-            .post('http://localhost:8900/analyze', {
+            .post('http://localhost:5000/tasks', {
             headers: {
             "Content-Type": "application/json"
             },
