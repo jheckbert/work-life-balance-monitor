@@ -4,6 +4,7 @@ const taskList = require(taskListFile)
 const taskListRouter = express.Router()
 const helper = require("../helpers/helper")
 
+<<<<<<< HEAD
 taskListRouter
     .get("/", (req, res) => {
         res.send(taskList)
@@ -31,5 +32,10 @@ taskListRouter
         helper.writeJSONFile(taskListFile, taskList)
         res.send(taskList[taskList.length - 1])
     })
+=======
+taskListRouter.post("/", (req, res) => {
+    res.send(taskList)
+})
+>>>>>>> 20b21881295728faff0b60da168110dc01c5b69b
 
 module.exports = taskListRouter
