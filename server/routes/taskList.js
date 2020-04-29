@@ -51,7 +51,8 @@ taskListRouter
         helper.writeJSONFile(benchmarkFile, benchmark)
         helper.writeJSONFile(taskListFile, taskList)
 
-        res.send(taskList[taskList.length - 1])
+        // res.send(taskList[taskList.length - 1])
+        res.send(benchmark)
     })
 
 module.exports = taskListRouter

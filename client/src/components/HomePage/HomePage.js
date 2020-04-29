@@ -10,7 +10,7 @@ import './HomePage.scss';
 import '../styling/form-master.scss';
 
 // images
-import logo from '../images/footprints1.jpg';
+import logo from '../images/graphic.jpg';
 
 //import application components
 
@@ -34,8 +34,9 @@ export default class HomePage extends Component {
             message: message
             }})        
             .then(result => {
-                let response = result.data;
+                let response = result.data[0];
                 console.log('response:', response);
+                console.log('Work:', Number(response.Work), 'Personal:', Number(response.Personal), 'Family:', Number(response.Family), 'Exercise:', Number(response.Exercise));
 
             })
             .catch(err => {
@@ -51,11 +52,12 @@ export default class HomePage extends Component {
                 <header className="header__container">
                     <div className="header__corp">
                         <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
-                        {/* <p className="header__corp-info">License No 12036</p>
-                <p className="header__corp-info2">Independently Owned and Operated Franchise</p> */}
                     </div>
                     <div className="header__title-container">
                         <h1 className="header__title">Footprints</h1>
+                    </div>
+                    <div className="header__corp">
+                        <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
                     </div>
                 </header>
                 <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.captureTask}>
