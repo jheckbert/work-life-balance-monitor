@@ -13,14 +13,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "fs": "0.0.1-security",
     "nodemon": "^2.0.3",
-    "uuid": "^7.0.3"
-=======
+    "uuid": "^7.0.3",
     "n-readlines": "^1.0.0",
-    "nodemon": "^2.0.3",
     "replace-in-file": "^6.0.0"
->>>>>>> 20b21881295728faff0b60da168110dc01c5b69b
   }
 }

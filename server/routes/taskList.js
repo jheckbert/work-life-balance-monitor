@@ -4,7 +4,6 @@ const taskList = require(taskListFile)
 const taskListRouter = express.Router()
 const helper = require("../helpers/helper")
 
-<<<<<<< HEAD
 taskListRouter
     .get("/", (req, res) => {
         res.send(taskList)
@@ -16,15 +15,15 @@ taskListRouter
             const minutes = (req.body.data.time - lastStamp) / 1000 / 60
             task = {
                 time: req.body.data.time,
-                message: req.body.data.message,
                 classification: req.body.data.classification,
+                message: req.body.data.message,
                 timestamp: minutes
             }
         } else {
             task = {
                 time: req.body.data.time,
-                message: req.body.data.message,
-                classification: req.body.data.classification
+                classification: req.body.data.classification,
+                message: req.body.data.message
             }
         }
 
@@ -32,10 +31,5 @@ taskListRouter
         helper.writeJSONFile(taskListFile, taskList)
         res.send(taskList[taskList.length - 1])
     })
-=======
-taskListRouter.post("/", (req, res) => {
-    res.send(taskList)
-})
->>>>>>> 20b21881295728faff0b60da168110dc01c5b69b
 
 module.exports = taskListRouter

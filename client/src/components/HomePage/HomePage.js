@@ -25,17 +25,6 @@ export default class HomePage extends Component {
 
         axios
             .post('http://localhost:5000/tasks', {
-<<<<<<< HEAD
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: {
-                    time: timestamp,
-                    message: message,
-                    classification: reason
-                }
-            })
-=======
             headers: {
             "Content-Type": "application/json"
             },
@@ -44,7 +33,6 @@ export default class HomePage extends Component {
             classification: reason,
             message: message
             }})        
->>>>>>> 20b21881295728faff0b60da168110dc01c5b69b
             .then(result => {
                 let response = result.data;
                 console.log('response:', response);
