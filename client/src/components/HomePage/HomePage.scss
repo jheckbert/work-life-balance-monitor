@@ -262,5 +262,31 @@
         margin-top: 0px;
         width: 79%;
     }}
+    
+    &__graph {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        height: 175px;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 425px) {
+    &__graph {
+        display: flex;
+        flex-direction: column;
+        width: 62%;
+        height: 175px;
+        align-items: center;
+    }}
+
+    @media screen and (min-width: 426px) and (max-width: 768px) {
+    &__graph {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 175px;
+        align-items: center;
+    }}
 
 }

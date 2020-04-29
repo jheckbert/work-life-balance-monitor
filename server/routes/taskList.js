@@ -26,7 +26,7 @@ taskListRouter
             task = {
                 time: req.body.data.time,
                 message: req.body.data.message,
-                classification: req.body.data.classification,
+                classification: req.body.data.classification
             }
 
             //Add duration to the previous task

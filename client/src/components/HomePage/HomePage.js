@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Chart from 'chartjs';
 // import emailjs from 'emailjs-com';
 // import { NavLink, Route } from 'react-router-dom';
 
@@ -36,9 +37,32 @@ export default class HomePage extends Component {
             })
             .then(result => {
                 let response = result.data[0];
-                console.log('response:', response);
-                console.log('Work:', Number(response.Work), 'Personal:', Number(response.Personal), 'Family:', Number(response.Family), 'Exercise:', Number(response.Exercise));
+                console.log('Work:', (response.Work).toFixed(0), 'Personal:', (response.Personal).toFixed(0), 'Family:', (response.Family).toFixed(0), 'Exercise:', (response.Exercise).toFixed(0));
 
+                var labels = ["Work", "Personal", "Family", "Exercise"];
+                var data = [(response.Work).toFixed(0), (response.Personal).toFixed(0), (response.Family).toFixed(0), (response.Exercise).toFixed(0)];
+                var pie = document.getElementById("pieChart");
+                var workChart = new Chart(pie, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: 
+                            {
+                                data: data,
+                                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(192, 0, 0, 1)', 'rgb(0, 153, 51, 1)', 'rgb(0, 0, 0, 1)'],
+                                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(192, 0, 0, 0.2)', 'rgb(0, 153, 51, 0.2)', 'rgb(0, 0, 0, 0.2)']
+                            }
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: "Your work-life balance"
+                        }
+                    }
+                })
+                var c = document.getElementById("header__pieGraph");
+                var ctx = c.getContext('2d');
+                ctx.drawImage(workChart, 0, 0);
             })
             .catch(err => {
                 console.log(err);
@@ -57,8 +81,8 @@ export default class HomePage extends Component {
                     <div className="header__title-container">
                         <h1 className="header__title">Footprints</h1>
                     </div>
-                    <div className="header__corp">
-                        <img className="header__corp-logo" src={logo} alt="company Logo" width='200' />
+                    <div className="header__graph">
+                        <canvas id="header__pieGraph"></canvas>
                     </div>
                 </header>
                 <form className="monitor__form form-layout" id="inputCapture" onSubmit={this.captureTask}>
