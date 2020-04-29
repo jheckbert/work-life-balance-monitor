@@ -19,30 +19,33 @@ taskListRouter
             lastStamp = taskList[taskList.length - 1].time;
             BmClassification = taskList[taskList.length - 1].classification
 
-            const minutes = ((req.body.data.time - lastStamp) / 1000 / 60).toFixed(2)
+            //Different in minutes
+            const minutes = ((req.body.data.time - lastStamp) / 1000 / 60)
 
+            //Add new task
             task = {
                 time: req.body.data.time,
-                classification: req.body.data.classification,
                 message: req.body.data.message,
-                timestamp: minutes
+                classification: req.body.data.classification,
             }
+
+            //Add duration to the previous task
             taskList[taskList.length - 1].duration = minutes
 
             if (BmClassification === "Work") {
-                benchmark[0].Work += Number(minutes).toFixed(2)
+                benchmark[0].Work += Number(minutes)
             } else if (BmClassification === "Family") {
-                benchmark[0].Family += Number(minutes).toFixed(2)
+                benchmark[0].Family += Number(minutes)
             } else if (BmClassification === "Exercise") {
-                benchmark[0].Exercise += Number(minutes).toFixed(2)
+                benchmark[0].Exercise += Number(minutes)
             } else if (BmClassification === "Personal") {
-                benchmark[0].Personal += Number(minutes).toFixed(2)
+                benchmark[0].Personal += Number(minutes)
             }
         } else {
             task = {
                 time: req.body.data.time,
-                classification: req.body.data.classification,
-                message: req.body.data.message
+                message: req.body.data.message,
+                classification: req.body.data.classification
             }
         }
 
