@@ -11,7 +11,9 @@ import './HomePage.scss';
 import '../styling/form-master.scss';
 
 // images
-import logo from '../images/graphic.jpg';
+import logo from '../images/user2.png';
+// import graph from '../images/graph.JPG';
+
 
 //import application components
 
@@ -41,8 +43,9 @@ export default class HomePage extends Component {
 
                 var labels = ["Work", "Personal", "Family", "Exercise"];
                 var data = [(response.Work).toFixed(0), (response.Personal).toFixed(0), (response.Family).toFixed(0), (response.Exercise).toFixed(0)];
-                var pie = document.getElementById("pieChart");
+                var pie = document.getElementById("header__pieChart");
                 var workChart = new Chart(pie, {
+                // var pieChart = new Chart(canvas) {
                     type: 'pie',
                     data: {
                         labels: labels,
@@ -60,9 +63,9 @@ export default class HomePage extends Component {
                         }
                     }
                 })
-                var c = document.getElementById("header__pieGraph");
-                var ctx = c.getContext('2d');
-                ctx.drawImage(workChart, 0, 0);
+                // var c = document.getElementById("header__pieGraph");
+                // var ctx = c.getContext('2d');
+                // ctx.drawImage(pie, 0, 0);
             })
             .catch(err => {
                 console.log(err);
@@ -81,6 +84,9 @@ export default class HomePage extends Component {
                     <div className="header__title-container">
                         <h1 className="header__title">Footprints</h1>
                     </div>
+                    {/* <div className="header__corp">
+                        <img className="header__graph" src={graph} alt="company Logo" width='200' />
+                    </div> */}
                     <div className="header__graph">
                         <canvas id="header__pieGraph"></canvas>
                     </div>

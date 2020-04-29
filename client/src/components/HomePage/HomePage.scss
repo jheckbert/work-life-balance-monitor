@@ -141,7 +141,7 @@
 
     &__title-container {
         width: 100%;
-        background-image: url(/static/media/footprints1.ed04d2bb.jpg);
+        background-image: url('../images/footprints1.jpg');
         background-size: cover;
         background-position: bottom;
         margin-right: 1%;
@@ -150,7 +150,7 @@
     @media screen and (max-width: 425px) {
     &__title-container {
         width: 100%;
-        background-image: url(/static/media/footprints1.ed04d2bb.jpg);
+        background-image: url('../images/footprints1.jpg');
         background-size: cover;
         background-position: bottom;
         margin-right: 1%;
@@ -220,24 +220,21 @@
     
     
     &__corp-logo {
-        width: 175px;
-        height: 175px;
+        width: 200%;
         margin-bottom: 0px;
         margin-right: 1%;
     }
 
     @media screen and (min-width: 426px) and (max-width: 768px) {
     &__corp-logo {
-        width: 175px;
-        height: 175px;
+        width: 200%;
         margin-bottom: 0px;
         margin-right: 1%;
     }}
 
     @media screen and (max-width: 425px) {
         &__corp-logo {
-            width: 275px;
-            height: 175px;
+            width: 200%;
             margin-bottom: 0px;
         }}
     
@@ -262,7 +259,7 @@
         margin-top: 0px;
         width: 79%;
     }}
-    
+
     &__graph {
         display: flex;
         flex-direction: column;
